@@ -28,6 +28,7 @@ e.g. `src/example.component.html` and `src/example.component.ts`)
 Since calling the commands manually each time is quite cumbersme, I use the following bindings:
 
 | command                | binding      |
+|------------------------|--------------|
 | `:NgQuickSwitchToggle` | `<leader>qs` |
 
 If you want to use the same bindings, you can pass `use_default_keybindings=true` as follows:
