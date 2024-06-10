@@ -8,24 +8,29 @@ end
 
 function M.quick_switch_toggle()
     local relative_file_path = vim.fn.expand("%")
-    if relative_file_path:endswith ".ts" then
+    if relative_file_path:endswith ".component.ts" then
         local file_to_open = relative_file_path:gsub(".ts$", ".html")
         vim.cmd.edit(file_to_open)
         return
     end
 
-    if relative_file_path:endswith ".html" then
+    if relative_file_path:endswith ".component.html" then
         local file_to_open = relative_file_path:gsub(".html$", ".ts")
         vim.cmd.edit(file_to_open)
         return
     end
 
-    print("NgQuickSwitchToggle command can only be used to toggle between .ts and .html")
+    error(":NgQuickSwitchToggle can only be called in .component.html and .component.ts files", 1)
 end
 
-function M.setup()
+function M.setup(opts)
+    opts = opts or {}
+
     vim.api.nvim_create_user_command("NgQuickSwitchToggle", M.quick_switch_toggle, {})
-    vim.keymap.set("n", "<leader>uu", ":NgQuickSwitchToggle<cr>")
+
+    if opts.use_default_keybindings then
+        vim.keymap.set("n", "<leader>qs", ":NgQuickSwitchToggle<cr>")
+    end
 end
 
 return M

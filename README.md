@@ -11,8 +11,27 @@ between the class definition and template of an Angular component. However, sinc
 serves as an experiment to get into NeoVim plugin development, I'll probably add the possibility to
 switch to all different files directly at some point.
 
+## Installation
+
+[lazy.nvim](https://github.com/folke/lazy.nvim)
+
+```
+{ "matthiasweiss/angular-quickswitch.nvim", opts = {} }
+```
+
 ## Usage
 
 `:NgQuickSwitchToggle` toggles between the class definition and the template of your Angular component
 (assumes that the files are in the same folder and that the filenames are identical, 
 e.g. `src/example.component.html` and `src/example.component.ts`)
+
+Since calling the commands manually each time is quite cumbersme, I use the following bindings:
+
+| command                | binding      |
+| `:NgQuickSwitchToggle` | `<leader>qs` |
+
+If you want to use the same bindings, you can pass `use_default_keybindings=true` as follows:
+
+```
+{ "matthiasweiss/angular-quickswitch.nvim", opts = { use_default_keybindings = true } }
+```
