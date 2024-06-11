@@ -31,8 +31,8 @@ Since calling the commands manually each time is quite cumbersme, I use the foll
 |------------------------|--------------|
 | `:NgQuickSwitchToggle` | `<leader>qs` |
 
-If you want to use the same bindings, you can pass `use_default_keybindings=true` as follows:
+If you want to use the same bindings, you can pass `use_default_keymaps=true` as follows:
 
 ```
-{ "matthiasweiss/angular-quickswitch.nvim", opts = { use_default_keybindings = true } }
+{ "matthiasweiss/angular-quickswitch.nvim", opts = { use_default_keymaps = true } }
 ```

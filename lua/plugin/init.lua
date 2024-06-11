@@ -28,7 +28,7 @@ function M.setup(opts)
 
     vim.api.nvim_create_user_command("NgQuickSwitchToggle", M.quick_switch_toggle, {})
 
-    if opts.use_default_keybindings then
+    if opts.use_default_keymaps then
         vim.keymap.set("n", "<leader>qs", ":NgQuickSwitchToggle<cr>")
     end
 end

@@ -1,1 +1,1 @@
-print("plugin/example.lua is executed!")
+print("angular-quickswitch.nvim loaded")
