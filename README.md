@@ -25,13 +25,13 @@ switch to all different files directly at some point.
 (assumes that the files are in the same folder and that the filenames are identical, 
 e.g. `src/example.component.html` and `src/example.component.ts`)
 
-Since calling the commands manually each time is quite cumbersme, I use the following bindings:
+Since calling the commands manually each time is quite cumbersome, I use the following keymaps:
 
-| command                | binding      |
+| command                | keymap      |
 |------------------------|--------------|
 | `:NgQuickSwitchToggle` | `<leader>qs` |
 
-If you want to use the same bindings, you can pass `use_default_keymaps=true` as follows:
+If you want to use the same keymaps, you can pass `use_default_keymaps=true` as follows:
 
 ```
 { "matthiasweiss/angular-quickswitch.nvim", opts = { use_default_keymaps = true } }
