@@ -2,14 +2,15 @@ local M = {} -- M stands for module, a naming convention
 
 function M.quick_switch_toggle()
     local relative_file_path = vim.fn.expand("%")
-    if string.match(relative_file_path, ".component.ts$") then
-        local file_to_open = relative_file_path:gsub(".ts$", ".html")
+
+    if string.match(relative_file_path, "%.component%.ts$") then
+        local file_to_open = relative_file_path:gsub("%.ts$", ".html")
         vim.cmd.edit(file_to_open)
         return
     end
 
-    if string.match(relative_file_path, ".component.html$") then
-        local file_to_open = relative_file_path:gsub(".html$", ".ts")
+    if string.match(relative_file_path, "%.component%.html$") then
+        local file_to_open = relative_file_path:gsub("%.html$", ".ts")
         vim.cmd.edit(file_to_open)
         return
     end
