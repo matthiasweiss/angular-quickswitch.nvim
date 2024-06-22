@@ -1,4 +1,4 @@
-local M = {} -- M stands for module, a naming convention
+local M = {}
 
 function M.quick_switch_toggle()
     local relative_file_path = vim.fn.expand("%")
