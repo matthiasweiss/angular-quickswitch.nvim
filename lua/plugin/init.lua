@@ -19,9 +19,7 @@ function M.quick_switch_toggle()
 
     for _, transformation in ipairs(file_path_transformation_map) do
         if string.match(relative_file_path, transformation.regex) then
-            print(relative_file_path)
             local file_to_open = transformation.transform(relative_file_path)
-            print(file_to_open)
             vim.cmd.edit(file_to_open)
             return
         end
