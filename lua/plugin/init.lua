@@ -1,30 +1,28 @@
 local M = {}
 
+local file_path_transformations = {
+    componentToTemplate = function(path) path:gsub("%.ts$", ".html") end,
+    templateToComponent = function(path) path:gsub("%.html$", ".ts") end,
+    testToClass = function(path) path:gsub("%.spec%.ts$", ".ts") end,
+    classToTest = function(path) path:gsub("%.ts$", ".spec.ts") end,
+}
+
 function M.quick_switch_toggle()
     local relative_file_path = vim.fn.expand("%")
 
-    if string.match(relative_file_path, "%.component%.ts$") then
-        local file_to_open = relative_file_path:gsub("%.ts$", ".html")
-        vim.cmd.edit(file_to_open)
-        return
-    end
+    local file_path_transformation_map = {
+        { regex = "%.component%.ts$",   transform = file_path_transformations.componentToTemplate },
+        { regex = "%.component%.html$", transform = file_path_transformations.templateToComponent },
+        { regex = "%.spec%.ts$",        transform = file_path_transformations.testToClass },
+        { regex = "%.ts$",              transform = file_path_transformations.classToTest },
+    }
 
-    if string.match(relative_file_path, "%.component%.html$") then
-        local file_to_open = relative_file_path:gsub("%.html$", ".ts")
-        vim.cmd.edit(file_to_open)
-        return
-    end
-
-    if string.match(relative_file_path, "%.spec%.ts$") then
-        local file_to_open = relative_file_path:gsub("%.spec%.ts$", ".ts")
-        vim.cmd.edit(file_to_open)
-        return
-    end
-
-    if string.match(relative_file_path, "%.ts$") then
-        local file_to_open = relative_file_path:gsub("%.ts$", ".spec.ts")
-        vim.cmd.edit(file_to_open)
-        return
+    for _, transformation in ipairs(file_path_transformation_map) do
+        if string.match(relative_file_path, transformation.regex) then
+            local file_to_open = transformation.transform(relative_file_path)
+            vim.cmd.edit(file_to_open)
+            return
+        end
     end
 
     error(":NgQuickSwitchToggle could not determine file that should be opened", 1)
