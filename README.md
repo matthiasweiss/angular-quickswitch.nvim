@@ -7,10 +7,7 @@ This plugin is a clone of other popular Angular QuickSwitch plugins, e.g.:
 
 While there are similar plugins for NeoVim, e.g. [nvim-quick-switcher](https://github.com/Everduin94/nvim-quick-switcher) 
 or [ngswitcher](https://github.com/softoika/ngswitcher.vim), I usually only use the shortcut to toggle
-between the class definition and template of an Angular component. However, since this project also
-serves as an experiment to get into NeoVim plugin development, I'll probably add the possibility to
-switch to all different files directly at some point.
-
+between the class definition and template of an Angular component.
 ## Installation
 
 [lazy.nvim](https://github.com/folke/lazy.nvim)
@@ -28,7 +25,15 @@ switch to all different files directly at some point.
 e.g. `src/example.component.html` and `src/example.component.ts`)
 * For any other TypeScript file (e.g. services, pipes, guards, etc.) it toggles between the file and 
 its associated test file, it assumes the test suffix to be `.spec.ts`, e.g. `src/example.service.ts` 
-and `src/example.service.spec.ts`
+and `src/example.service.spec.ts`.
+
+All of the following commands switch to one specific file:
+
+| command                   | file                                                                     |
+|---------------------------|--------------------------------------------------------------------------|
+| `:NgQuickSwitchClass`     | class file, e.g. `example.component.ts` or `example.service.ts`          |
+| `:NgQuickSwitchTemplate`  | template file, e.g. `example.component.html`                             |
+| `:NgQuickSwitchTest`      | test file, e.g. `example.component.spec.ts` or `example.service.spec.ts` |
 
 Since calling the commands manually each time is quite cumbersome, I use the following keymaps:
 
