@@ -3,16 +3,22 @@ local M = {}
 local file_path_transformations = {
     unchanged = function(path) return path end,
 
-    classToTemplate = function(path) return path:gsub("%.ts$", ".html") end,
-    templateToClass = function(path) return path:gsub("%.html$", ".ts") end,
+    componentToTemplate = function(path) return path:gsub("%.ts$", ".html") end,
+    templateToComponent = function(path) return path:gsub("%.html$", ".ts") end,
 
     testToClass = function(path) return path:gsub("%.spec%.ts$", ".ts") end,
     classToTest = function(path) return path:gsub("%.ts$", ".spec.ts") end,
 
-    cssToClass = function(path) return path:gsub("%.css$", ".ts") end,
-    scssToClass = function(path) return path:gsub("%.scss$", ".ts") end,
-    sassToClass = function(path) return path:gsub("%.sass$", ".ts") end,
-    lessToClass = function(path) return path:gsub("%.less$", ".ts") end,
+    cssToComponent = function(path) return path:gsub("%.css$", ".ts") end,
+    scssToComponent = function(path) return path:gsub("%.scss$", ".ts") end,
+    sassToComponent = function(path) return path:gsub("%.sass$", ".ts") end,
+    lessToComponent = function(path) return path:gsub("%.less$", ".ts") end,
+
+    testToTemplate = function(path) return path:gsub("%.spec%.ts$", ".html") end,
+    cssToTemplate = function(path) return path:gsub("%.css$", ".html") end,
+    scssToTemplate = function(path) return path:gsub("%.scss$", ".html") end,
+    sassToTemplate = function(path) return path:gsub("%.sass$", ".html") end,
+    lessToTemplate = function(path) return path:gsub("%.less$", ".html") end,
 }
 
 local function open_target_file(opts)
@@ -26,13 +32,13 @@ local function open_target_file(opts)
         end
     end
 
-    error(opts.command .. " could not determine target file", 1)
+    error(":" .. opts.command .. " could not determine target file", 1)
 end
 
 function M.quick_switch_toggle()
     local file_path_transformation_map = {
-        { regex = "%.component%.ts$",   transform = file_path_transformations.classToTemplate },
-        { regex = "%.component%.html$", transform = file_path_transformations.templateToClass },
+        { regex = "%.component%.ts$",   transform = file_path_transformations.componentToTemplate },
+        { regex = "%.component%.html$", transform = file_path_transformations.templateToComponent },
         { regex = "%.spec%.ts$",        transform = file_path_transformations.testToClass },
         { regex = "%.ts$",              transform = file_path_transformations.classToTest },
     }
@@ -43,12 +49,26 @@ end
 function M.quick_switch_component()
     local file_path_transformation_map = {
         { regex = "%.component%.ts$",       transform = file_path_transformations.unchanged },
-        { regex = "%.component%.html$",     transform = file_path_transformations.templateToClass },
+        { regex = "%.component%.html$",     transform = file_path_transformations.templateToComponent },
         { regex = "%.component%.spec%.ts$", transform = file_path_transformations.testToClass },
-        { regex = "%.component%.css$",      transform = file_path_transformations.cssToClass },
-        { regex = "%.component%.scss$",     transform = file_path_transformations.scssToClass },
-        { regex = "%.component%.sass$",     transform = file_path_transformations.sassToClass },
-        { regex = "%.component%.less$",     transform = file_path_transformations.lessToClass },
+        { regex = "%.component%.css$",      transform = file_path_transformations.cssToComponent },
+        { regex = "%.component%.scss$",     transform = file_path_transformations.scssToComponent },
+        { regex = "%.component%.sass$",     transform = file_path_transformations.sassToComponent },
+        { regex = "%.component%.less$",     transform = file_path_transformations.lessToComponent },
+    }
+
+    open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchComponent" })
+end
+
+function M.quick_switch_template()
+    local file_path_transformation_map = {
+        { regex = "%.component%.ts$",       transform = file_path_transformations.componentToTemplate },
+        { regex = "%.component%.html$",     transform = file_path_transformations.unchanged },
+        { regex = "%.component%.spec%.ts$", transform = file_path_transformations.testToTemplate },
+        { regex = "%.component%.css$",      transform = file_path_transformations.cssToTemplate },
+        { regex = "%.component%.scss$",     transform = file_path_transformations.scssToTemplate },
+        { regex = "%.component%.sass$",     transform = file_path_transformations.sassToTemplate },
+        { regex = "%.component%.less$",     transform = file_path_transformations.lessToTemplate },
     }
 
     open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchComponent" })
