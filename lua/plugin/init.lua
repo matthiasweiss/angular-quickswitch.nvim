@@ -15,17 +15,18 @@ function M.quick_switch_toggle()
         return
     end
 
+    if string.match(relative_file_path, "%.spec%.ts$") then
+        local file_to_open = relative_file_path:gsub("%.spec%.ts$", ".ts")
+        vim.cmd.edit(file_to_open)
+        return
+    end
+
     if string.match(relative_file_path, "%.ts$") then
         local file_to_open = relative_file_path:gsub("%.ts$", ".spec.ts")
         vim.cmd.edit(file_to_open)
         return
     end
 
-    if string.match(relative_file_path, "%.spec%.ts$") then
-        local file_to_open = relative_file_path:gsub("%.spec%.ts$", ".ts")
-        vim.cmd.edit(file_to_open)
-        return
-    end
 
     error(":NgQuickSwitchToggle can only be called in .component.html and .component.ts files", 1)
 end
