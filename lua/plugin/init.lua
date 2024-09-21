@@ -10,7 +10,6 @@ local file_path_transformations = {
     classToTest = function(path) return path:gsub("%.ts$", ".spec.ts") end,
 
     testToTemplate = function(path) return path:gsub("%.spec%.ts$", ".html") end,
-
     templateToTest = function(path) return path:gsub("%.html$", ".spec.ts") end,
 }
 
@@ -41,9 +40,9 @@ end
 
 function M.quick_switch_class()
     local file_path_transformation_map = {
+        { regex = "%.spec%.ts$", transform = file_path_transformations.testToClass },
         { regex = "%.ts$",       transform = file_path_transformations.unchanged },
         { regex = "%.html$",     transform = file_path_transformations.templateToClass },
-        { regex = "%.spec%.ts$", transform = file_path_transformations.testToClass },
     }
 
     open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchComponent" })
@@ -51,9 +50,9 @@ end
 
 function M.quick_switch_template()
     local file_path_transformation_map = {
+        { regex = "%.spec%.ts$", transform = file_path_transformations.testToTemplate },
         { regex = "%.ts$",       transform = file_path_transformations.classToTemplate },
         { regex = "%.html$",     transform = file_path_transformations.unchanged },
-        { regex = "%.spec%.ts$", transform = file_path_transformations.testToTemplate },
     }
 
     open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchTemplate" })
@@ -61,9 +60,9 @@ end
 
 function M.quick_switch_test()
     local file_path_transformation_map = {
+        { regex = "%.spec%.ts$", transform = file_path_transformations.unchanged },
         { regex = "%.ts$",       transform = file_path_transformations.classToTest },
         { regex = "%.html$",     transform = file_path_transformations.templateToTest },
-        { regex = "%.spec%.ts$", transform = file_path_transformations.unchanged },
     }
 
     open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchTemplate" })
