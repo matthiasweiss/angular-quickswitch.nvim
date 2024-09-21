@@ -15,7 +15,7 @@ function M.quick_switch_toggle()
         return
     end
 
-    if string.match(relative_file_path, "%.%.ts$") then
+    if string.match(relative_file_path, "%.ts$") then
         local file_to_open = relative_file_path:gsub("%.ts$", ".spec.ts")
         vim.cmd.edit(file_to_open)
         return
