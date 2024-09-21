@@ -21,9 +21,14 @@ switch to all different files directly at some point.
 
 ## Usage
 
-`:NgQuickSwitchToggle` toggles between the class definition and the template of your Angular component
+`:NgQuickSwitchToggle` has the following behavior: 
+
+* For components it toggles between the class definition and the template of your Angular component
 (assumes that the files are in the same folder and that the filenames are identical, 
 e.g. `src/example.component.html` and `src/example.component.ts`)
+* For any other TypeScript file (e.g. services, pipes, guards, etc.) it toggles between the file and 
+its associated test file, it assumes the test suffix to be `.spec.ts`, e.g. `src/example.service.ts` 
+and `src/example.spec.ts`
 
 Since calling the commands manually each time is quite cumbersome, I use the following keymaps:
 

@@ -27,8 +27,7 @@ function M.quick_switch_toggle()
         return
     end
 
-
-    error(":NgQuickSwitchToggle can only be called in .component.html and .component.ts files", 1)
+    error(":NgQuickSwitchToggle could not determine file that should be opened", 1)
 end
 
 function M.setup(opts)
