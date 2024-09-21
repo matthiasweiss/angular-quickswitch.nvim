@@ -35,13 +35,13 @@ All of the following commands switch to one specific file:
 | `:NgQuickSwitchTemplate`  | Template, e.g. `example.component.html`                             |
 | `:NgQuickSwitchTest`      | Test, e.g. `example.component.spec.ts` or `example.service.spec.ts` |
 
+## Keymaps
+
 Since calling the commands manually each time is quite cumbersome, I use the following keymaps:
 
 | command                | keymap       |
 |------------------------|--------------|
 | `:NgQuickSwitchToggle` | `<leader>qs` |
-
-## Keymaps
 
 If you want to use the same keymaps, you can pass `use_default_keymaps=true` as follows:
 
