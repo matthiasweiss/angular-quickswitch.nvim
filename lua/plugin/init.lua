@@ -45,7 +45,7 @@ function M.quick_switch_class()
         { regex = "%.html$",     transform = file_path_transformations.templateToClass },
     }
 
-    open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchComponent" })
+    open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchClass" })
 end
 
 function M.quick_switch_template()
@@ -65,7 +65,7 @@ function M.quick_switch_test()
         { regex = "%.html$",     transform = file_path_transformations.templateToTest },
     }
 
-    open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchTemplate" })
+    open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchTest" })
 end
 
 function M.setup(opts)
