@@ -31,13 +31,13 @@ All of the following commands switch to one specific file:
 
 | command                   | file                                                                     |
 |---------------------------|--------------------------------------------------------------------------|
-| `:NgQuickSwitchClass`     | class file, e.g. `example.component.ts` or `example.service.ts`          |
-| `:NgQuickSwitchTemplate`  | template file, e.g. `example.component.html`                             |
-| `:NgQuickSwitchTest`      | test file, e.g. `example.component.spec.ts` or `example.service.spec.ts` |
+| `:NgQuickSwitchClass`     | Class, e.g. `example.component.ts` or `example.service.ts`          |
+| `:NgQuickSwitchTemplate`  | Template, e.g. `example.component.html`                             |
+| `:NgQuickSwitchTest`      | Test, e.g. `example.component.spec.ts` or `example.service.spec.ts` |
 
 Since calling the commands manually each time is quite cumbersome, I use the following keymaps:
 
-| command                | keymap      |
+| command                | keymap       |
 |------------------------|--------------|
 | `:NgQuickSwitchToggle` | `<leader>qs` |
 
