@@ -41,6 +41,8 @@ Since calling the commands manually each time is quite cumbersome, I use the fol
 |------------------------|--------------|
 | `:NgQuickSwitchToggle` | `<leader>qs` |
 
+## Keymaps
+
 If you want to use the same keymaps, you can pass `use_default_keymaps=true` as follows:
 
 ```
