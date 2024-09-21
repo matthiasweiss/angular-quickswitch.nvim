@@ -71,7 +71,7 @@ function M.quick_switch_template()
         { regex = "%.component%.less$",     transform = file_path_transformations.lessToTemplate },
     }
 
-    open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchComponent" })
+    open_target_file({ file_path_transformation_map = file_path_transformation_map, command = "NgQuickSwitchTemplate" })
 end
 
 function M.setup(opts)
@@ -79,6 +79,7 @@ function M.setup(opts)
 
     vim.api.nvim_create_user_command("NgQuickSwitchToggle", M.quick_switch_toggle, {})
     vim.api.nvim_create_user_command("NgQuickSwitchComponent", M.quick_switch_component, {})
+    vim.api.nvim_create_user_command("NgQuickSwitchTemplate", M.quick_switch_template, {})
 
     if opts.use_default_keymaps then
         vim.keymap.set("n", "<leader>qs", ":NgQuickSwitchToggle<cr>")
